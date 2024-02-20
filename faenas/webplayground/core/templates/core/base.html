@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <!-- Estilos -->
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
+
+    <!-- Imagen del Favicon, icono o símbolo que acompañará tu URL en los navegadores -->
+    <link rel="icon" type="image/ico" href="{% static 'core/ico/NANA.ico' %}">
+
+  </head>
+  <body>
+
+      <!-- Navegación -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'home' %}">AGSatPC IT Consulting</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="ned">
+
+            <!-- BOTONES DEL LADO IZQUIERDO DE LA BARRA -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'pages:pages' %}">Servicios</a>
+              </li>
+              {% if request.user.username != "toni"  %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'somos' %}">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contacto</a>
+                </li>
+              {% endif %}
+              {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profiles:list' %}">Perfiles</a>
+                </li>
+              {% endif %}
+              {% if request.user.username == "toni" or request.user.username == "paquito" %}
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.pythonanywhere.com" target="_blank">pythonanywhere</a>
+                </li>
+              {% endif %}
+            </ul>
+
+            <!-- BOTONES DEL LADO DERECHO DE LA BARRA -->
+            <ul class="navbar-nav">
+              {% if not request.user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Acceder</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'signup' %}">Registro</a>
+                </li>
+              {% else %} <!--Usuari@ Autentificad@-->
+                {% if request.user.username == "toni" or request.user.username == "paquito" %}
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.appinformatica.com/tienda-de-informatica-cadiz-jerez-princi.php" target="_blank">APP</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="http://desarrolloxerez.pythonanywhere.com/admin/">A</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'clientes' %}">Clientes</a>
+                </li>
+              {% endif %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'repara' %}">Intervenciones</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'bonos' %}">Bonos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'messenger:list' %}">Mensajes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                </li>
+              {% endif %}
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
+      <!-- Cabecera -- Imagen de Fondo De La Página -->
+      <header class="masthead" style="background-image: url('{% block background %}{% endblock %}')">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <img src="{% static 'core/img/Logo.png' %}" class="img-fluid"/>
+              <div class="site-heading">
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Contenido -->
+      {% block content %}{% endblock %}
+
+      <hr>
+
+      <!-- Pié de página -->
+
+      <footer class="footer text-faded text-center py-5">
+        <div class="container">
+          <p class="m-0">
+
+            {% if not request.user.is_authenticated or user.is_superuser%}
+
+              {% if LINK_TWITTER %}
+                  <a href="{{LINK_TWITTER}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                      <!--<i class="fa-brands fa-x-twitter"></i>-->
+                    </span>
+                  </a>
+              {% endif %}
+
+              {% if LINK_FACEBOOK %}
+                <a href="{{LINK_FACEBOOK}}" target="_blank" class="link">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              {% endif %}
+
+              {% if LINK_INSTAGRAM %}
+                <a href="{{LINK_INSTAGRAM}}" target="_blank" class="link">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              {% endif %}
+
+              {% if LINK_TWITCH %}
+                <a href="{{ LINK_TWITCH }}" target="_blank" class="link">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitch fa-stack-1x fa-inverse"></i></i>
+                  </span>
+                </a>
+              {% endif %}
+
+              {% if LINK_LINKEDIN %}
+                <a href="{{LINK_LINKEDIN}}" target="_blank" class="link">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              {% endif %}
+
+              {% if LINK_WHATSAPP %}
+                <a href="{{ LINK_WHATSAPP }}" target="_blank" class="link">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              {% endif %}
+
+            {% else %}
+
+              {% if request.user.first_name == "Machaco Pastor S.C.A." %}
+                {% if LINK_FACEBOOK_MACHACO %}
+                    <a href="{{ LINK_FACEBOOK_MACHACO }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                {% if LINK_TWITTER_MACHACO %}
+                    <a href="{{ LINK_TWITTER_MACHACO }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                {% if LINK_WHATSAPP_MACHACO %}
+                    <a href="{{ LINK_WHATSAPP_MACHACO }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+              {% endif %}
+
+              {% if request.user.first_name == "Ferrylamp S.L." %}
+                {% if LINK_FACEBOOK_FERRYLAMP %}
+                    <a href="{{ LINK_FACEBOOK_FERRYLAMP }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class=" fa fa-facebook fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                {% if LINK_TWITTER_FERRYLAMP %}
+                    <a href="{{ LINK_TWITTER_FERRYLAMP }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                {% if LINK_WHATSAPP_FERRYLAMP %}
+                    <a href="{{ LINK_WHATSAPP_FERRYLAMP }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+             {% endif %}
+
+             {% if request.user.first_name == "Paramedic S.L." %}
+                {% if LINK_FACEBOOK_PARAMEDIC %}
+                    <a href="{{ LINK_FACEBOOK_PARAMEDIC }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                {% if LINK_TWITTER_PARAMEDIC %}
+                    <a href="{{ LINK_TWITTER_PARAMEDIC }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                {% if LINK_WHATSAPP_PARAMEDIC %}
+                    <a href="{{ LINK_WHATSAPP_PARAMEDIC }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+             {% endif %}
+
+            {% endif %}
+
+          </p>
+            <p class="m-0 mbt1">&copy; desarrolloXerez 2024</p>
+        </div>
+	    </footer>
+
+<!-- Javascript -->
+      <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+      <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'core/js/main.js' %}"></script>
+  </body>
+</html>

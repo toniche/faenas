@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% block title %}Bonos{% endblock %}
+{% block content %}
+<main role="main">
+
+    <center>
+        {% for obj in object_list %}
+          <!--Hemos introducido en 'Nombre' del usuari@, nombre Empresa-->
+          {% if obj.Cliente == request.user.first_name or user.is_superuser %}
+            <h2>{{ obj.Cliente }}</br></h2>
+            <font color="red"><h3>Tipo De Bono:</font> {{ obj.Tipo }}</br></h2></h3>
+            <font color="red"><h3>Fecha Del Bono:</font> {{ obj.FechaBono }}</br></h3>
+            <font color="red"><h3>Caducidad Del Bono:</font> {{ obj.Expira }}</br></h3>
+          {% endif %}
+          <br></br>
+        {% endfor %}
+    </center>
+
+</main>
+{% endblock %}

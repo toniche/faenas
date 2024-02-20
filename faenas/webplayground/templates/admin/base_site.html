@@ -1,0 +1,50 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block extrastyle %}
+<style>
+
+    #header {
+        background: white;
+
+    }
+
+    /* Tamaño "BIENVENIDO/A, DESARROLLOXEREZ. VER EL SITIO / CAMBIAR CONTRASEÑA / TERMINAR SESIÓN" */
+    #user-tools {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: black ;
+        font-size: 15px;
+    }
+
+    #header a:link, #header a:visited {
+        color: red;
+    }
+
+    .module h2, .module caption, .inline-group h2 {
+        background: #343a40;
+    }
+
+    a.section:link, a.section:visited {
+        color: red
+    }
+
+    .module user-tools {
+        color: black;
+    }
+
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <!--- Foto del panel admin de Django -->
+        <img src="{% static 'core/img/SetUp.jpg' %}" height="150px" />
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

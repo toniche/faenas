@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+{% block title %}Intervenciones{% endblock %}
+{% block content %}
+<main role="main">
+
+    <center>
+    {% if user.is_superuser %}
+        {% for obj in object_list %}
+            <h1>{{ obj.Nombre }}</br></h1>
+                <font color="red"><h3>Cif: </font> {{ obj.Cif }}</br></h3>
+                <font color="red"><h3>Dirección: </font> {{ obj.Direccion }}</br></h3>
+                <font color="red"><h3>Localidad: </font>{{ obj.Localidad }}</br></h3>
+                <font color="red"><h3>Provincia: </font>{{ obj.Provincia }}</br></h3>
+                <font color="red"><h3>Código Postal: </font>{{ obj.CP }}</br></h3>
+                <font color="red"><h3>Fecha De Alta: </font>{{ obj.Alta }}</br></h3>
+                <h1 style="font-style:italic">{{ obj.Otros }}</h1>
+            <br></br>
+        {% endfor %}
+    {% endif %}
+    </center>
+
+</main>
+{% endblock %}
+

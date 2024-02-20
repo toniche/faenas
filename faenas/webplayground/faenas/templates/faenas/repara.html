@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Intervenciones{% endblock %}
+{% block content %}
+<main role="main">
+  <div class="container">
+        <center>
+        {% if user.is_superuser %}
+             <ul>
+                {% for obj in object_list %}
+                <li>{{ obj.Cliente }}, {{ obj.Fecha }}, {{ obj.Motivo }}, {{ obj.Descripcion }},
+                    {% if obj.Estado == False %}
+                        Estado Intervención: PENDIENTE
+                    {% else %}
+                        Estado Intervención: SOLUCIONADO
+                     {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            <form action = "/" method = "POST" target="_blank">
+                <h3>Empresa a Listar:</h3>
+                <input type = "text" name = "Cliente" value = "" style = "width:200px" / >
+                <input type = "submit" value = "Buscar">
+                {% csrf_token %} <!-- EVITAMOS QUE DESDE WEB EXTERNA MANDEN INFO A NUESTRO -->
+            </form>              <!--FORMULARIO. -->
+        {% else %}
+            {% for obj in object_list %}
+            <!-- 'models.py' : class Reparaciones - Email ; Autenticación y Autorización / Usuarios - Dirección de correo electrónico -->
+                {% if obj.Email  == request.user.email %}
+                    <h2>{{ obj.Cliente }}</h2>
+                    <font color="red"><em><h3>Fecha Intervención:</font> {{ obj.Fecha }}</h3></em>
+                    {% if obj.Estado == False %}
+                        <font color="red"><em><h3>Estado Intervención: </font>PENDIENTE</h3></em>
+                    {% else %}
+                        <font color="red"><em></em><h3>Estado Intervención: </font>SOLUCIONADO</h3></em>
+                    {% endif %}
+                    <font color="red"><em><h3>Motivo Reparación:</font> {{ obj.Motivo }}</h3></em>
+                    <font color="red"><em><h3>Descripción:</font> {{ obj.Descripcion }}</h3></em>
+                {% endif %}
+                <br>
+            {% endfor %}
+        {% endif %}
+        </center>
+  </div>
+</main>
+{% endblock %}
+

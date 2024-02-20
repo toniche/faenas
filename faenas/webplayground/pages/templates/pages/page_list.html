@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Páginas{% endblock %}
+{% block content %}
+{% include 'pages/includes/pages_menu.html' %}
+<main role="main">
+  <div class="container mb-4">
+    {% for page in page_list|dictsort:"id" reversed %}
+      <div class="row mt-3">
+        <div class="col-md-9 mx-auto">
+          <h2 class="mb-4">{{page.title}}</h2>
+            {% comment %} {% if request.user.username == 'messi' %}  
+              <h1>Página Panel Control Intervenciones de {{request.user.username}}</h1> 
+              <p>Correo electrónico {{request.user.email}}</p>
+              <p>Password {{request.user.password}}</p>
+            {% endif %}{% endcomment %}
+          <p>{{page.content|striptags|safe|truncatechars:"200"}}</p>
+          <p><a href="{% url 'pages:page' page.id page.title|slugify %}">Leer más</a>
+            {% if request.user.is_staff %}
+              | <a href="{% url 'pages:update' page.id %}">Editar</a>
+              | <a href="{% url 'pages:delete' page.id %}">Borrar</a>
+            {% endif %}
+          </p> 
+        </div>
+      </div>
+    {% endfor %} 
+  </div>
+</main>
+{% endblock %}
