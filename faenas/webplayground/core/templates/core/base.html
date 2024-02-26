@@ -39,7 +39,7 @@
                   <a class="nav-link" href="{% url 'somos' %}">Nosotros</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Contacto</a>
+                  <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
                 </li>
               {% endif %}
               {% if request.user.is_authenticated %}
