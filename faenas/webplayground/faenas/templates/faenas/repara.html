@@ -13,9 +13,9 @@
                 <b>Motivo: </b>{{ obj.Motivo }}
                 <p><b>Descripcción: </b>{{ obj.Descripcion }}</p>
                 {% if obj.Estado == False %}
-                    <p><b>Estado Intervención: </b>PENDIENTE</p>
+                    <p><b>Estado Intervención: </b><em><font color = red>PENDIENTE</font></em></p>
                 {% else %}
-                    <p><b>Estado Intervención: </b>SOLUCIONADO</p>
+                    <p><b>Estado Intervención: </b><em>SOLUCIONADO</em></p>
                 {% endif %}
                 <br>
             {% endfor %}
@@ -36,9 +36,9 @@
                     <b>Motivo: </b>{{ obj.Motivo }}
                     <p><b>Descripcción: </b>{{ obj.Descripcion }}</p>
                     {% if obj.Estado == False %}
-                        <p><b>Estado Intervención: </b>PENDIENTE</p>
+                        <p><b>Estado Intervención: </b><em><font color = red>PENDIENTE</font></em></p>
                     {% else %}
-                        <p><b>Estado Intervención: </b>SOLUCIONADO</p>
+                        <p><b>Estado Intervención: </b><em>SOLUCIONADO</em></p>
                     {% endif %}
                 {% endif %}
                 <br>
