@@ -181,7 +181,8 @@
 
             {% else %}
 
-              {% if request.user.first_name == "Machaco Pastor S.C.A." %}
+              {% if request.user.first_name == "Jose Manuel" %}
+
                 {% if LINK_FACEBOOK_MACHACO %}
                     <a href="{{ LINK_FACEBOOK_MACHACO }}" target="_blank" class="link">
                       <span class="fa-stack fa-lg">
@@ -191,14 +192,14 @@
                     </a>
                 {% endif %}
 
-                {% if LINK_TWITTER_MACHACO %}
+                <!-- {% if LINK_TWITTER_MACHACO %}
                     <a href="{{ LINK_TWITTER_MACHACO }}" target="_blank" class="link">
                       <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                       </span>
                     </a>
-                {% endif %}
+                {% endif %} -->
 
                 {% if LINK_WHATSAPP_MACHACO %}
                     <a href="{{ LINK_WHATSAPP_MACHACO }}" target="_blank" class="link">
@@ -208,10 +209,12 @@
                       </span>
                     </a>
                 {% endif %}
+
               {% endif %}
 
-              {% if request.user.first_name == "Ferrylamp S.L." %}
-                {% if LINK_FACEBOOK_FERRYLAMP %}
+              {% if request.user.first_name == "Angel" %}
+
+                <!--{% if LINK_FACEBOOK_FERRYLAMP %}
                     <a href="{{ LINK_FACEBOOK_FERRYLAMP }}" target="_blank" class="link">
                       <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
@@ -227,7 +230,7 @@
                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                       </span>
                     </a>
-                {% endif %}
+                {% endif %} -->
 
                 {% if LINK_WHATSAPP_FERRYLAMP %}
                     <a href="{{ LINK_WHATSAPP_FERRYLAMP }}" target="_blank" class="link">
@@ -237,10 +240,12 @@
                       </span>
                     </a>
                 {% endif %}
-             {% endif %}
 
-             {% if request.user.first_name == "Paramedic S.L." %}
-                {% if LINK_FACEBOOK_PARAMEDIC %}
+              {% endif %}
+
+              {% if request.user.first_name == "Ignacio" %}
+
+                <!--{% if LINK_FACEBOOK_PARAMEDIC %}
                     <a href="{{ LINK_FACEBOOK_PARAMEDIC }}" target="_blank" class="link">
                       <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x"></i>
@@ -256,7 +261,7 @@
                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                       </span>
                     </a>
-                {% endif %}
+                {% endif %} -->
 
                 {% if LINK_WHATSAPP_PARAMEDIC %}
                     <a href="{{ LINK_WHATSAPP_PARAMEDIC }}" target="_blank" class="link">
@@ -266,7 +271,88 @@
                       </span>
                     </a>
                 {% endif %}
-             {% endif %}
+
+              {% endif %}
+
+              {% if request.user.first_name == "Rossy" %}
+
+                {% if LINK_FACEBOOK_ROSSY %}
+                    <a href="{{ LINK_FACEBOOK_ROSSY }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                <!--{% if LINK_TWITTER_ROSSY %}
+                    <a href="{{ LINK_TWITTER_ROSSY }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %} -->
+
+                {% if LINK_INSTAGRAM_ROSSY %}
+                    <a href="{{LINK_INSTAGRAM_ROSSY}}" target="_blank" class="link">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                {% endif %}
+
+                {% if LINK_WHATSAPP_ROSSY %}
+                    <a href="{{ LINK_WHATSAPP_ROSSY }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+              {% endif %}
+
+              {% if request.user.first_name == "Ana María" %}
+
+                {% if LINK_FACEBOOK_ANA_JOY %}
+                    <a href="{{ LINK_FACEBOOK_ANA_JOY }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                <!--{% if LINK_TWITTER_ANA_JOY %}
+                    <a href="{{ LINK_TWITTER_ANA_JOY }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %} -->
+
+                {% if LINK_YOUTUBE_ANA_JOY %}
+                    <a href="{{ LINK_YOUTUBE_ANA_JOY }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+                {% if LINK_WHATSAPP_ANA_JOY %}
+                    <a href="{{ LINK_WHATSAPP_ANA_JOY }}" target="_blank" class="link">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
+                      </span>
+                    </a>
+                {% endif %}
+
+              {% endif %}
 
             {% endif %}
 
