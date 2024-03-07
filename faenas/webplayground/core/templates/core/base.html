@@ -19,7 +19,7 @@
     <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
 
     <!-- Imagen del Favicon, icono o símbolo que acompañará tu URL en los navegadores -->
-    <link rel="icon" type="image/ico" href="{% static 'core/ico/NANA.ico' %}">
+    <link rel="icon" type="image/img" href="{% static 'core/img/Favicon.jpg' %}">
 
   </head>
   <body>
@@ -133,7 +133,6 @@
                   <a href="{{LINK_TWITTER}}" target="_blank" class="link">
                     <span class="fa-stack fa-lg">
                       <i class="fa fa-circle fa-stack-2x"></i>
-                      <!--<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>-->
                       <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
                     </span>
                   </a>
@@ -176,7 +175,7 @@
               {% endif %}
 
               {% if LINK_TWITCH %}
-                <a href="{{ LINK_TWITCH }}" target="_blank" class="link">
+                <a href="{{LINK_TWITCH}}" target="_blank" class="link">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-twitch fa-stack-1x fa-inverse"></i></i>
@@ -194,7 +193,7 @@
               {% endif %}
 
               {% if LINK_WHATSAPP %}
-                <a href="{{ LINK_WHATSAPP }}" target="_blank" class="link">
+                <a href="{{LINK_WHATSAPP}}" target="_blank" class="link">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-whatsapp fa-stack-1x fa-inverse"></i>
@@ -203,7 +202,7 @@
               {% endif %}
 
               {% if LINK_TELEGRAM %}
-                <a href="{{ LINK_TELEGRAM }}" target="_blank" class="link">
+                <a href="{{LINK_TELEGRAM}}" target="_blank" class="link">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-telegram fa-stack-1x fa-inverse"></i>
@@ -211,13 +210,65 @@
                 </a>
               {% endif %}
 
-
               {% if LINK_REDDIT %}
-                <a href="{{ LINK_REDDIT }}" target="_blank" class="link">
+                <a href="{{LINK_REDDIT}}" target="_blank" class="link">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-reddit fa-stack-1x fa-inverse"></i>
                   </span>
+                </a>
+              {% endif %}
+
+              {% if LINK_TUMBLR %}
+                <a href="{{LINK_TUMBLR}}" target="_blank" class="link">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-tumblr fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              {% endif %}
+
+              {% if LINK_MASTODON %}
+                <a href="{{LINK_MASTODON}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-mastodon fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+              {% endif %}
+
+              {% if LINK_SNAPCHAT %}
+                <a href="{{LINK_SNAPCHAT}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-snapchat fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+              {% endif %}
+
+              <!-- QUITADO DE ADMIN DE ENLACES PORQUE NO SALE FOTO ICONO RED SOCIAL -->
+              {% if LINK_GAB_AI %}
+                <a href="{{LINK_GAB_AI}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-gab fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+              {% endif %}
+              {% if LINK_PLURK %}
+                <a href="{{LINK_PLURK}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-plurk fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+              {% endif %}
+              {% if LINK_THREADS %}
+                <a href="{{LINK_THREADS}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-threads fa-stack-1x fa-inverse"></i>
+                    </span>
                 </a>
               {% endif %}
 
