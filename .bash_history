@@ -1,19 +1,3 @@
-git pull faenas
-git pull Faenas
-ls
-cd ..
-ls
-cd ..
-ls
-cd pruebas
-ls
-cd faenas
-ls
-clear
-git status
-ls
-git add hola.txt
-git status
 git push origin main
 ls
 git add hola.txt
@@ -497,4 +481,20 @@ git
 git bash
 ls -lFa
 git push -u origin main
+exit
+workon dkango3
+ls
+workon django3
+ls
+ls NANA.ico
+ls -a NANA.ico
+ls
+find NANA.ico
+ls
+git status
+git add .
+ls
+git commit -m "Mas redes"
+git status
+git push -u origin master
 exit
