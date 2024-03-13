@@ -31,8 +31,9 @@
                     localStorage.setItem(name, value);
                     // leer datos
                     var miDato = localStorage.getItem(value);-->
-            <!-- A Q U Í  Q U I E R O  Q U E  E L  C L I E N T E  I N T E R A C T Ú E  P A R A  B U S C A R  I N F O -->
-            <p><b><h4>Búsqueda por Motivo "Correo Electrónico</b></h4></p>
+            <!-- A Q U Í  Q U I E R O  Q U E  E L  C L I E N T E  I N T E R A C T Ú E  P A R A  B U S C A R  I N F O  D E  S U S  F A E N A S -->
+
+            <p><b><h4>Búsqueda por Motivo "Correo Electrónico"</b></h4></p>
             {% for obj in object_list %}
                 <!-- 'models.py' : class Reparaciones - Email ; Autenticación y Autorización / Usuarios - Dirección de correo electrónico -->
                 {% if obj.Email  == request.user.email and obj.Motivo == "Correo electrónico" %}
