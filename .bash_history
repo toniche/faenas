@@ -1,20 +1,3 @@
-git push origin main
-ls
-git add hola.txt
-git commit -m 'Subiendo hola.txt'
-git status
-git push origin master
-git init
-git add hola.txt
-git commit -m 'Subiendo hola.txt'
-git status
-git push origin master
-git push origin main
-git push origin 
-git push faenas
-git status
-git pull
-git pull origin master
 git pull faenas master
 git pull help
 git help
@@ -497,4 +480,21 @@ ls
 git commit -m "Mas redes"
 git status
 git push -u origin master
+exit
+workon django3
+claer
+clear
+ls
+clear
+ls
+git status
+git add .
+git commit -m "Mas redes"
+git push -u origin master
+clear
+git status
+git push -u origin master
+ls
+git status
+git push
 exit
