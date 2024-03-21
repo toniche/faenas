@@ -20,7 +20,6 @@
 
     <!-- Imagen del Favicon, icono o símbolo que acompañará tu URL en los navegadores -->
     <link rel="icon" type="image/img" href="{% static 'core/img/Favicon.jpg' %}">
-
   </head>
   <body>
 
@@ -138,6 +137,33 @@
                   </a>
               {% endif %}
 
+              {% if LINK_XBOX %}
+                  <a href="{{LINK_XBOX}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-xbox fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+              {% endif %}
+
+              {% if LINK_SKYPE %}
+                  <a href="{{LINK_SKYPE}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-skype fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+              {% endif %}
+
+              {% if LINK_DISCORD %}
+                  <a href="{{LINK_DISCORD}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-discord fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+              {% endif %}
+
               {% if LINK_FACEBOOK %}
                 <a href="{{LINK_FACEBOOK}}" target="_blank" class="link">
                   <span class="fa-stack fa-lg">
@@ -247,6 +273,15 @@
               {% endif %}
 
               <!-- QUITADO DE ADMIN DE ENLACES PORQUE NO SALE FOTO ICONO RED SOCIAL -->
+              {% if LINK_BLUESKY %}
+                  <a href="{{LINK_BLUESKY}}" target="_blank" class="link">
+                    <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-sky fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+              {% endif %}
+
               {% if LINK_GAB_AI %}
                 <a href="{{LINK_GAB_AI}}" target="_blank" class="link">
                     <span class="fa-stack fa-lg">
@@ -271,6 +306,7 @@
                     </span>
                 </a>
               {% endif %}
+              <!--------------------------------------------------------------------->
 
             {% else %}
 

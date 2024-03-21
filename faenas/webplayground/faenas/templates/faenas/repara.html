@@ -20,28 +20,14 @@
                 <br>
             {% endfor %}
         {% else %}
-
-            <!--<form action = "/" method = "POST" target="_blank">
-                <h3>Empresa a Listar:</h3>
-                <input type = "text" name = "Cliente" value = "" style = "width:200px" / >
-                <input type = "submit" value = "Buscar">
-                {% csrf_token %}  EVITAMOS QUE DESDE WEB EXTERNA MANDEN INFO A NUESTRO FORMULARIO.
-                <script type="text/javascript">
-                    // guardar datos
-                    localStorage.setItem(name, value);
-                    // leer datos
-                    var miDato = localStorage.getItem(value);-->
-            <!-- A Q U Í  Q U I E R O  Q U E  E L  C L I E N T E  I N T E R A C T Ú E  P A R A  B U S C A R  I N F O  D E  S U S  F A E N A S -->
-
-            <p><b><h4>Búsqueda por Motivo "Correo Electrónico"</b></h4></p>
             {% for obj in object_list %}
-                <!-- 'models.py' : class Reparaciones - Email ; Autenticación y Autorización / Usuarios - Dirección de correo electrónico -->
-                {% if obj.Email  == request.user.email and obj.Motivo == "Correo electrónico" %}
+            <!--'models.py' : class Reparaciones - Email ; Autenticación y Autorización /
+                 Usuarios - Dirección de correo electrónico -->
+                {% if obj.Email  == request.user.email %}
                     <p><b>Número de Reparación: {{ obj.id }}</b></p>
-                    <!--<b>Nombre: </b>{{ obj.Cliente }}<b> | </b>-->
+                    <b>Nombre: </b>{{ obj.Cliente }}<b> | </b>
                     <b>Fecha: </b>{{ obj.Fecha }}<b> | </b>
-                    <!--<b>Motivo: </b>{{ obj.Motivo }}-->
-                    <p><b>Descripcción: </b>{{ obj.Descripcion }}</p>
+                    <p><b>Descripción: </b>{{ obj.Descripcion }}</p>
                     {% if obj.Estado == False %}
                         <p><b>Estado Intervención: </b><em><font color = red>PENDIENTE</font></em></p>
                     {% else %}
@@ -50,8 +36,6 @@
                     <br>
                 {% endif %}
             {% endfor %}
-            <!-- A Q U Í  Q U I E R O  Q U E  E L  C L I E N T E  I N T E R A C T Ú E  P A R A  B U S C A R  I N F O -->
-
         {% endif %}
         </center>
   </div>
