@@ -23,16 +23,12 @@
             {% for obj in object_list %}
             <!--'models.py' : class Reparaciones - Email ; Autenticación y Autorización /
                  Usuarios - Dirección de correo electrónico -->
-                {% if obj.Email  == request.user.email %}
+                {% if obj.Email  == request.user.email and obj.Estado == False %}
                     <p><b>Número de Reparación: {{ obj.id }}</b></p>
                     <b>Nombre: </b>{{ obj.Cliente }}<b> | </b>
                     <b>Fecha: </b>{{ obj.Fecha }}<b> | </b>
                     <p><b>Descripción: </b>{{ obj.Descripcion }}</p>
-                    {% if obj.Estado == False %}
-                        <p><b>Estado Intervención: </b><em><font color = red>PENDIENTE</font></em></p>
-                    {% else %}
-                        <p><b>Estado Intervención: </b><em>SOLUCIONADO</em></p>
-                    {% endif %}
+                    <p><b>Estado Intervención: </b><em><font color = red>PENDIENTE</font></em></p>
                     <br>
                 {% endif %}
             {% endfor %}
