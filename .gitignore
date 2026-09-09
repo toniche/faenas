@@ -12,6 +12,17 @@ dist/
 
 # Compiled Python bytecode
 *.py[cod]
+__pycache__/
+
+# Django / Python project files
+db.sqlite3
+*.sqlite3
+media/
+staticfiles/
+.env
+.venv/
+venv/
+env/
 
 # Log files
 *.log
@@ -47,4 +58,7 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+# VS Code
+.vscode/
 
