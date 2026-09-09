@@ -21,7 +21,7 @@ class ThreadDetail(DetailView):
     def get_object(self):
         obj = super(ThreadDetail, self).get_object()
         if self.request.user not in obj.users.all():
-            Http404()
+            raise Http404()
         return obj
             
 def add_message(request, pk):
@@ -35,7 +35,7 @@ def add_message(request, pk):
             json_response['created'] = True
 
             # CONTROLAMOS EL PRIMER MENSAJE DEL HILO PARA ACTUALIZAR EL HILO.
-            if len(thread.messages.all()) is 1:
+            if len(thread.messages.all()) == 1:
                 json_response['first'] = True
 
     else:

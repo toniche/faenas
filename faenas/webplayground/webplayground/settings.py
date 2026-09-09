@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7!n%vz78jo#08l(uj#d1_im#ts8b%==%i8bkok)1xoq&%9dyi%'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-change-me')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('1', 'true', 'yes')
 
 SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -37,8 +37,13 @@ SECURE_REFERRER_POLICY = 'same-origin'
 
 CSRF_COOKIE_SECURE = True
 
-ALLOWED_HOSTS = ['desarrolloxerez.pythonanywhere.com', 'localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = [
+    'desarrolloxerez.pythonanywhere.com',
+    'agsatpc.com',
+    'www.agsatpc.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -147,11 +152,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGOUT_REDIRECT_URL = 'home'
 
 # Emails
-EMAIL_HOST = "smtp.ionos.es"
-EMAIL_HOST_USER = "sat@agsatpc.com"
-EMAIL_HOST_PASSWORD = 'lOriam_%34/Zasca46'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.ionos.es')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ('1', 'true', 'yes')
 
 
 # Media Files.
