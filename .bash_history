@@ -1,19 +1,3 @@
-git pull faenas master
-git pull help
-git help
-git help -a
-git help -g
-git 
-clear
-ls
-vi nuevo.txt
-git add nuevo.txt
-git 
-ls
-git add .
-git status
-git commit -m 'Subiendo nuevo.txt'
-git status
 git pull origin master
 git pull master
 git push origin main
@@ -497,4 +481,20 @@ git push -u origin master
 ls
 git status
 git push
+exit
+ls
+git rebase --abort 2>/dev/null || git merge --abort 2>/dev/null || true
+rm -v .git/index.lock
+git status --porcelain=2 -b | sed -n '1,6p'
+git add -A
+git commit -m "WIP: guardar cambios locales antes de sincronizar" || echo "No hubo cambios para commitear"
+git log --oneline -n1
+git checkout master
+git fetch origin
+git pull --rebase origin master | sed -n '1,4p'
+git checkout wip/save-local-changes
+git rebase master | sed -n '1,4p'
+git status --porcelain=2 -b | sed -n '1,6p'
+clear
+nano faenas/webplayground/faenas/templates/faenas/repara.html
 exit

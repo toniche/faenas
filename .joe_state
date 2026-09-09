@@ -1,0 +1,42 @@
+# JOE state file v1.0
+search
+	backwards 0
+	ignore 0
+	replace 0
+	block_restrict 0
+	regex 0
+done
+macros
+done
+files
+	"/home/desarrolloxerez/.git/COMMIT_EDITMSG\n"
+	"/home/desarrolloxerez/.git/COMMIT_EDITMSG\n"
+done
+find
+done
+replace
+done
+run
+done
+build
+done
+grep
+done
+cmd
+	"quit\n"
+done
+math
+done
+yank
+	"qqq"
+	"q"
+	"q\n"
+	"q"
+	"q"
+done
+file_pos
+	1 "/home/desarrolloxerez/.git/COMMIT_EDITMSG"
+done
+colors
+	"xterm-256color" "default"
+done
