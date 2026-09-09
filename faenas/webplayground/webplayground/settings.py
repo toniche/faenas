@@ -45,6 +45,12 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://agsatpc.com',
+    'https://www.agsatpc.com',
+    'https://desarrolloxerez.pythonanywhere.com',
+]
+
 # Application definition
 
 INSTALLED_APPS = [
