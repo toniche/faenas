@@ -4,39 +4,32 @@
 {% block content %}
 <main role="main">
   <div class="container">
+        <form method="get" class="mb-4">
+            <label for="repair-search">Buscar reparación</label>
+            <input id="repair-search" type="search" name="q" value="{{ search }}" placeholder="Cliente, email, motivo o descripción">
+            <select name="estado" aria-label="Filtrar por estado">
+                <option value="">Todos los estados</option>
+                <option value="pendiente"{% if estado == "pendiente" %} selected{% endif %}>Pendientes</option>
+                <option value="solucionado"{% if estado == "solucionado" %} selected{% endif %}>Solucionadas</option>
+            </select>
+            <button type="submit">Buscar</button>
+        </form>
         <center>
-        {% if user.is_superuser %}
-            {% for obj in object_list %}
-                {% most_list = (obj.id, obj.Cliente, obj.Fecha, obj.Motivo, obj.Descripcion, obj.Estado) %}
-            {% endfor %}
-            {% sorted(most_list, key=lambda most_list: most_list[0], reverse=True) %}
-            {% for t in most_list %}
-                <p><b>Número de Reparación: {{ t[0] }}</b></p>
-                <p><b>Cliente: {{ t[1] }}</b></p>
-                <p><b>Fecha: {{ t[2] }}</b></p>
-                <p><b>Motivo: {{ t[3] }}</b></p>
-                <p><b>Descripción: {{ t[4] }}</b></p>
-                {% if t[5] == True %}
+        {% for obj in object_list %}
+                <p><b>Número de Reparación: {{ obj.id }}</b></p>
+                <p><b>Cliente: {{ obj.Cliente }}</b></p>
+                <p><b>Fecha: {{ obj.Fecha }}</b></p>
+                <p><b>Motivo: {{ obj.Motivo }}</b></p>
+                <p><b>Descripción: {{ obj.Descripcion }}</b></p>
+                {% if obj.Estado %}
                     <p><b>Estado de Reparación: SOLUCIONADO</b></p>
                 {% else %}
-                    <p><b>Número de Reparación: </p><p style="color:#FF0000";>PENDIENTE</p></b>
+                    <p><b>Estado de Reparación: <span style="color:#FF0000">PENDIENTE</span></b></p>
                 {% endif %}
                 <br>
-            {% endfor %}
-        {% else %}
-            {% for obj in object_list %}
-            <!--'models.py' : class Reparaciones - Email ; Autenticación y Autorización /
-                 Usuarios - Dirección de correo electrónico -->
-                {% if obj.Email  == request.user.email and obj.Estado == False %}
-                    <p><b>Número de Reparación: {{ obj.id }}</b></p>
-                    <b>Nombre: </b>{{ obj.Cliente }}<b> | </b>
-                    <b>Fecha: </b>{{ obj.Fecha }}<b> | </b>
-                    <p><b>Descripción: </b>{{ obj.Descripcion }}</p>
-                    <p><b>Estado Reparación Actual ToniChe:</b><em><font color = red>PENDIENTE</font></em></p>
-                    <br>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+        {% empty %}
+            <p>No hay reparaciones para mostrar.</p>
+        {% endfor %}
         </center>
   </div>
 </main>

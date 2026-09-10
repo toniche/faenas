@@ -11,6 +11,11 @@
             <font color="red"><h3>Tipo De Bono:</font> {{ obj.Tipo }}</br></h2></h3>
             <font color="red"><h3>Fecha Del Bono:</font> {{ obj.FechaBono }}</br></h3>
             <font color="red"><h3>Caducidad Del Bono:</font> {{ obj.Expira }}</br></h3>
+            {% if obj.Expira < today %}
+              <p style="color:#FF0000"><b>BONO CADUCADO</b></p>
+            {% else %}
+              <p><b>BONO VIGENTE</b></p>
+            {% endif %}
           {% endif %}
           <br></br>
         {% endfor %}

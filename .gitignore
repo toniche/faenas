@@ -22,6 +22,7 @@ staticfiles/
 .env
 .venv/
 .venv313/
+.venv*/
 .virtualenvs/
 venv/
 env/

@@ -51,7 +51,7 @@
                   <a class="nav-link" href="{% url 'profiles:list' %}">Perfiles</a>
                 </li>
               {% endif %}
-              {% if request.user.username == "toni" or request.user.username == "paquito" %}
+              {% if request.user.is_staff %}
                 <li class="nav-item">
                   <a class="nav-link" href="https://www.pythonanywhere.com" target="_blank">pythonanywhere</a>
                 </li>
@@ -68,12 +68,12 @@
                   <a class="nav-link" href="{% url 'signup' %}">Registro</a>
                 </li>
               {% else %} <!--Usuari@ Autentificad@-->
-                {% if request.user.username == "toni" or request.user.username == "paquito" %}
+                {% if request.user.is_staff %}
                 <li class="nav-item">
                   <a class="nav-link" href="https://www.appinformatica.com/" target="_blank">APP</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="http://desarrolloxerez.pythonanywhere.com/admin/">A</a>
+                  <a class="nav-link" href="{% url 'admin:index' %}">A</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'clientes' %}">Clientes</a>

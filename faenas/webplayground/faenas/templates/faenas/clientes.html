@@ -4,7 +4,7 @@
 <main role="main">
 
     <center>
-    {% if user.is_superuser %}
+    {% if user.is_staff %}
         {% for obj in object_list %}
             <h1>{{ obj.Nombre }}</br></h1>
                 <font color="red"><h3>Cif: </font> {{ obj.Cif }}</br></h3>

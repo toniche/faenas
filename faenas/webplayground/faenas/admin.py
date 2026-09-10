@@ -18,7 +18,7 @@ class ClientesAdmin(admin.ModelAdmin):
 class BonosAdmin(admin.ModelAdmin):
     list_display=("Tipo", "Cliente", "FechaBono", "Expira")
     list_display_links=["Cliente"]
-    search_fields=("Cliente", "Cif")
+    search_fields=("Cliente", "Tipo")
     list_filter=("Cliente", "Tipo", "Expira")
 
 admin.site.register(Clientes, ClientesAdmin)
