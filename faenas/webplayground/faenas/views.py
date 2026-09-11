@@ -9,7 +9,7 @@ from django.db.models import Q
 class ReparaPageView(LoginRequiredMixin, TemplateView):
     template_name = "faenas/repara.html"
     def get(self, request, *arg, **kwargs):
-        queryset = Reparaciones.objects.all()
+        queryset = Reparaciones.objects.select_related("ClienteRelacionado").all()
         if not request.user.is_superuser:
             queryset = queryset.filter(Email__iexact=request.user.email)
 
@@ -17,6 +17,11 @@ class ReparaPageView(LoginRequiredMixin, TemplateView):
         if search:
             queryset = queryset.filter(
                 Q(Cliente__icontains=search)
+                | Q(ClienteRelacionado__Nombre__icontains=search)
+                | Q(ClienteRelacionado__Cif__icontains=search)
+                | Q(ClienteRelacionado__Direccion__icontains=search)
+                | Q(ClienteRelacionado__Localidad__icontains=search)
+                | Q(ClienteRelacionado__Provincia__icontains=search)
                 | Q(Email__icontains=search)
                 | Q(Motivo__icontains=search)
                 | Q(Descripcion__icontains=search)
@@ -31,6 +36,7 @@ class ReparaPageView(LoginRequiredMixin, TemplateView):
         queryset = queryset.order_by("-Fecha", "-id")
         context = {
             "object_list": queryset,
+            "result_count": queryset.count(),
             "Cliente": "List",
             "search": search,
             "estado": estado,

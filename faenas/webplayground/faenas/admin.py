@@ -2,11 +2,16 @@ from django.contrib import admin
 from .models import Clientes, Reparaciones, BonoRepara
 
 class ReparacionesAdmin(admin.ModelAdmin):
-    list_display=("Cliente", "Fecha", "Motivo", "Estado", "Descripcion")
-    list_display_links = ["Cliente", "Descripcion"]
-    search_fields=("Cliente", "Email", "Fecha", "Motivo", "Estado", "Descripcion")
-    list_filter=("Cliente", "Email", "Fecha", "Motivo", "Estado", "Descripcion")
+    list_display=("cliente_display", "Fecha", "Motivo", "Estado", "Descripcion")
+    list_display_links = ["cliente_display", "Descripcion"]
+    search_fields=("Cliente", "ClienteRelacionado__Nombre", "ClienteRelacionado__Cif", "Email", "Motivo", "Descripcion")
+    list_filter=("Estado", "ClienteRelacionado", "Fecha")
     date_hierarchy=("Fecha")
+
+    def cliente_display(self, obj):
+        return obj.cliente_display
+
+    cliente_display.short_description = "Cliente"
 
 class ClientesAdmin(admin.ModelAdmin):
     list_display=("Nombre", "Cif", "Direccion", "Localidad", "Provincia", "CP", "Alta", "Otros")

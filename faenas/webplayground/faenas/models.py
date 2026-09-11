@@ -6,6 +6,14 @@ from django.contrib.auth.models import User
 class Reparaciones(models.Model):
     """ idCliente=models.OneToOneField(User, on_delete=models.CASCADE) """
     Cliente=models.CharField(max_length=40)
+    ClienteRelacionado=models.ForeignKey(
+        'Clientes',
+        on_delete=models.SET_NULL,
+        related_name='reparaciones',
+        null=True,
+        blank=True,
+        verbose_name='Cliente'
+    )
     Email=models.EmailField(verbose_name="Correo Electrónico")
     Fecha=models.DateTimeField(verbose_name="Fecha de creación")
     Motivo=models.CharField(max_length=200)
@@ -23,6 +31,12 @@ class Reparaciones(models.Model):
     # cualquier otro lugar donde necesites referirte a una instancia del modelo).
     # Con frecuencia éste devolverá un título o nombre de campo del modelo.
     def __str__(self):
+        return self.cliente_display
+
+    @property
+    def cliente_display(self):
+        if self.ClienteRelacionado:
+            return self.ClienteRelacionado.Nombre
         return self.Cliente
 
 class Clientes(models.Model):

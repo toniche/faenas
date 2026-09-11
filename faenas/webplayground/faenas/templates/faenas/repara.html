@@ -1,36 +1,207 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block title %}Intervenciones{% endblock %}
+{% block extra_css %}
+<style>
+    .repair-shell {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 249, 252, 0.98));
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 1.25rem;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+    }
+
+    .repair-shell__title {
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        font-size: .78rem;
+        font-weight: 700;
+        color: #64748b;
+    }
+
+    .repair-stats {
+        min-width: 8rem;
+        text-align: right;
+    }
+
+    .repair-stats__count {
+        font-size: 2.25rem;
+        line-height: 1;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .repair-results {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .repair-card {
+        background: #fff;
+        border-radius: 1rem;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+        padding: 1.25rem;
+    }
+
+    .repair-card__header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-bottom: .9rem;
+    }
+
+    .repair-card__name {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .repair-card__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+        margin-top: .6rem;
+    }
+
+    .repair-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+        padding: .35rem .65rem;
+        border-radius: 999px;
+        background: #f1f5f9;
+        color: #334155;
+        font-size: .85rem;
+        line-height: 1;
+    }
+
+    .repair-pill--status-ok {
+        background: rgba(34, 197, 94, .12);
+        color: #166534;
+    }
+
+    .repair-pill--status-pending {
+        background: rgba(239, 68, 68, .12);
+        color: #b91c1c;
+    }
+
+    .repair-card__section-title {
+        margin: 0 0 .25rem 0;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #64748b;
+    }
+
+    .repair-card__text {
+        margin: 0;
+        color: #334155;
+        white-space: pre-line;
+    }
+
+    .repair-empty {
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px dashed rgba(15, 23, 42, 0.18);
+        background: rgba(255, 255, 255, 0.7);
+        color: #64748b;
+        text-align: center;
+    }
+
+    @media (min-width: 900px) {
+        .repair-results {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+</style>
+{% endblock %}
 {% block content %}
-<main role="main">
-  <div class="container">
-        <form method="get" class="mb-4">
-            <label for="repair-search">Buscar reparación</label>
-            <input id="repair-search" type="search" name="q" value="{{ search }}" placeholder="Cliente, email, motivo o descripción">
-            <select name="estado" aria-label="Filtrar por estado">
-                <option value="">Todos los estados</option>
-                <option value="pendiente"{% if estado == "pendiente" %} selected{% endif %}>Pendientes</option>
-                <option value="solucionado"{% if estado == "solucionado" %} selected{% endif %}>Solucionadas</option>
-            </select>
-            <button type="submit">Buscar</button>
-        </form>
-        <center>
-        {% for obj in object_list %}
-                <p><b>Número de Reparación: {{ obj.id }}</b></p>
-                <p><b>Cliente: {{ obj.Cliente }}</b></p>
-                <p><b>Fecha: {{ obj.Fecha }}</b></p>
-                <p><b>Motivo: {{ obj.Motivo }}</b></p>
-                <p><b>Descripción: {{ obj.Descripcion }}</b></p>
-                {% if obj.Estado %}
-                    <p><b>Estado de Reparación: SOLUCIONADO</b></p>
-                {% else %}
-                    <p><b>Estado de Reparación: <span style="color:#FF0000">PENDIENTE</span></b></p>
+<main role="main" class="py-4">
+    <div class="container">
+        <section class="repair-shell p-4 p-md-5 mb-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
+                <div>
+                    <p class="repair-shell__title mb-2">Gestor de intervenciones</p>
+                    <h1 class="h3 mb-2">Búsqueda de reparaciones</h1>
+                    <p class="text-muted mb-0">Localiza por cliente, CIF, email, motivo o descripción y filtra por estado.</p>
+                </div>
+                <div class="repair-stats">
+                    <div class="repair-stats__count">{{ result_count }}</div>
+                    <div class="text-muted">resultado{{ result_count|pluralize }}</div>
+                </div>
+            </div>
+
+            <form method="get" class="mt-4">
+                <div class="form-row align-items-end">
+                    <div class="col-lg-8 mb-3 mb-lg-0">
+                        <label for="repair-search" class="small text-muted mb-1">Buscar reparación</label>
+                        <input id="repair-search" class="form-control form-control-lg" type="search" name="q" value="{{ search }}" placeholder="Cliente, CIF, email, motivo o descripción">
+                    </div>
+                    <div class="col-lg-3 mb-3 mb-lg-0">
+                        <label for="repair-status" class="small text-muted mb-1">Estado</label>
+                        <select id="repair-status" class="form-control form-control-lg" name="estado" aria-label="Filtrar por estado">
+                            <option value="">Todos los estados</option>
+                            <option value="pendiente"{% if estado == "pendiente" %} selected{% endif %}>Pendientes</option>
+                            <option value="solucionado"{% if estado == "solucionado" %} selected{% endif %}>Solucionadas</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="submit" class="btn btn-dark btn-lg btn-block">Buscar</button>
+                    </div>
+                </div>
+                {% if search or estado %}
+                    <div class="repair-card__meta mt-3">
+                        {% if search %}<span class="repair-pill">Texto: {{ search }}</span>{% endif %}
+                        {% if estado == "pendiente" %}<span class="repair-pill repair-pill--status-pending">Filtro: Pendientes</span>{% endif %}
+                        {% if estado == "solucionado" %}<span class="repair-pill repair-pill--status-ok">Filtro: Solucionadas</span>{% endif %}
+                    </div>
                 {% endif %}
-                <br>
-        {% empty %}
-            <p>No hay reparaciones para mostrar.</p>
-        {% endfor %}
-        </center>
-  </div>
+            </form>
+        </section>
+
+        <section class="repair-results">
+            {% for obj in object_list %}
+                <article class="repair-card">
+                    <div class="repair-card__header">
+                        <div>
+                            <p class="repair-card__section-title">Intervención #{{ obj.id }}</p>
+                            <h2 class="repair-card__name">{{ obj.cliente_display }}</h2>
+                            <div class="repair-card__meta">
+                                <span class="repair-pill">{{ obj.Email }}</span>
+                                <span class="repair-pill">{{ obj.Fecha }}</span>
+                            </div>
+                        </div>
+                        {% if obj.Estado %}
+                            <span class="repair-pill repair-pill--status-ok">Solucionada</span>
+                        {% else %}
+                            <span class="repair-pill repair-pill--status-pending">Pendiente</span>
+                        {% endif %}
+                    </div>
+
+                    {% if obj.ClienteRelacionado %}
+                        <p class="repair-card__section-title mt-3">Cliente asociado</p>
+                        <p class="repair-card__text mb-3">{{ obj.ClienteRelacionado.Nombre }} | CIF {{ obj.ClienteRelacionado.Cif }} | {{ obj.ClienteRelacionado.Localidad }}, {{ obj.ClienteRelacionado.Provincia }}</p>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <p class="repair-card__section-title">Motivo</p>
+                        <p class="repair-card__text">{{ obj.Motivo }}</p>
+                    </div>
+
+                    <div>
+                        <p class="repair-card__section-title">Descripción</p>
+                        <p class="repair-card__text">{{ obj.Descripcion }}</p>
+                    </div>
+                </article>
+            {% empty %}
+                <div class="repair-empty">
+                    No hay reparaciones para mostrar.
+                </div>
+            {% endfor %}
+        </section>
+    </div>
 </main>
 {% endblock %}

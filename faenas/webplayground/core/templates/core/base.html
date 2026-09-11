@@ -17,6 +17,7 @@
     <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
+    {% block extra_css %}{% endblock %}
 
     <!-- Imagen del Favicon, icono o símbolo que acompañará tu URL en los navegadores -->
     <link rel="icon" type="image/img" href="{% static 'core/img/Favicon.jpg' %}">
