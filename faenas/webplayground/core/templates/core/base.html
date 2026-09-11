@@ -92,7 +92,10 @@
                   <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                  <form action="{% url 'logout' %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link btn btn-link p-0 align-baseline">Salir</button>
+                  </form>
                 </li>
               {% endif %}
             </ul>
