@@ -1,25 +1,156 @@
 {% extends 'core/base.html' %}
 {% block title %}Bonos{% endblock %}
+{% block extra_css %}
+<style>
+  .list-shell {
+    background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(247,249,252,.98));
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  }
+
+  .list-shell__title {
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    font-size: .78rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+
+  .list-stats {
+    min-width: 8rem;
+    text-align: right;
+  }
+
+  .list-stats__count {
+    font-size: 2.25rem;
+    line-height: 1;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .list-results {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .list-card {
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    padding: 1.25rem;
+  }
+
+  .list-card__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: .9rem;
+  }
+
+  .list-card__name {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .list-card__section-title {
+    margin: 0 0 .25rem 0;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #64748b;
+  }
+
+  .list-card__text {
+    margin: 0;
+    color: #334155;
+    white-space: pre-line;
+  }
+
+  .list-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .35rem .65rem;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: .85rem;
+    line-height: 1;
+  }
+
+  .list-pill--ok {
+    background: rgba(34, 197, 94, .12);
+    color: #166534;
+  }
+
+  .list-pill--bad {
+    background: rgba(239, 68, 68, .12);
+    color: #b91c1c;
+  }
+
+  .list-empty {
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px dashed rgba(15, 23, 42, 0.18);
+    background: rgba(255, 255, 255, 0.7);
+    color: #64748b;
+    text-align: center;
+  }
+
+  @media (min-width: 900px) {
+    .list-results {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+{% endblock %}
 {% block content %}
-<main role="main">
+<main role="main" class="py-4">
+  <div class="container">
+    <section class="list-shell p-4 p-md-5 mb-4">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
+        <div>
+          <p class="list-shell__title mb-2">Gestión de bonos</p>
+          <h1 class="h3 mb-2">Listado de bonos</h1>
+          <p class="text-muted mb-0">Consulta los bonos activos y caducados con una vista más clara.</p>
+        </div>
+        <div class="list-stats">
+          <div class="list-stats__count">{{ result_count }}</div>
+          <div class="text-muted">bono{{ result_count|pluralize }}</div>
+        </div>
+      </div>
+    </section>
 
-    <center>
-        {% for obj in object_list %}
-          <!--Hemos introducido en 'Nombre' del usuari@, nombre Empresa-->
-          {% if obj.Cliente == request.user.first_name or user.is_superuser %}
-            <h2>{{ obj.Cliente }}</br></h2>
-            <font color="red"><h3>Tipo De Bono:</font> {{ obj.Tipo }}</br></h2></h3>
-            <font color="red"><h3>Fecha Del Bono:</font> {{ obj.FechaBono }}</br></h3>
-            <font color="red"><h3>Caducidad Del Bono:</font> {{ obj.Expira }}</br></h3>
+    <section class="list-results">
+      {% for obj in object_list %}
+        <article class="list-card">
+          <div class="list-card__header">
+            <div>
+              <p class="list-card__section-title">Bonificación</p>
+              <h2 class="list-card__name">{{ obj.Cliente }}</h2>
+              <div class="mt-3 d-flex flex-wrap gap-2">
+                <span class="list-pill">{{ obj.Tipo }}</span>
+                <span class="list-pill">Inicio {{ obj.FechaBono }}</span>
+                <span class="list-pill">Caduca {{ obj.Expira }}</span>
+              </div>
+            </div>
             {% if obj.Expira < today %}
-              <p style="color:#FF0000"><b>BONO CADUCADO</b></p>
+              <span class="list-pill list-pill--bad">Caducado</span>
             {% else %}
-              <p><b>BONO VIGENTE</b></p>
+              <span class="list-pill list-pill--ok">Vigente</span>
             {% endif %}
-          {% endif %}
-          <br></br>
-        {% endfor %}
-    </center>
-
+          </div>
+        </article>
+      {% empty %}
+        <div class="list-empty">No hay bonos para mostrar.</div>
+      {% endfor %}
+    </section>
+  </div>
 </main>
 {% endblock %}

@@ -1,24 +1,160 @@
 {% extends 'core/base.html' %}
-{% block title %}Intervenciones{% endblock %}
+{% block title %}Clientes{% endblock %}
+{% block extra_css %}
+<style>
+    .list-shell {
+        background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(247,249,252,.98));
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 1.25rem;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+    }
+
+    .list-shell__title {
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        font-size: .78rem;
+        font-weight: 700;
+        color: #64748b;
+    }
+
+    .list-stats {
+        min-width: 8rem;
+        text-align: right;
+    }
+
+    .list-stats__count {
+        font-size: 2.25rem;
+        line-height: 1;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .list-results {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .list-card {
+        background: #fff;
+        border-radius: 1rem;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+        padding: 1.25rem;
+    }
+
+    .list-card__header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-bottom: .9rem;
+    }
+
+    .list-card__name {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .list-card__section-title {
+        margin: 0 0 .25rem 0;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        color: #64748b;
+    }
+
+    .list-card__text {
+        margin: 0;
+        color: #334155;
+        white-space: pre-line;
+    }
+
+    .list-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: .35rem;
+        padding: .35rem .65rem;
+        border-radius: 999px;
+        background: #f1f5f9;
+        color: #334155;
+        font-size: .85rem;
+        line-height: 1;
+    }
+
+    .list-empty {
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px dashed rgba(15, 23, 42, 0.18);
+        background: rgba(255, 255, 255, 0.7);
+        color: #64748b;
+        text-align: center;
+    }
+
+    @media (min-width: 900px) {
+        .list-results {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+</style>
+{% endblock %}
 {% block content %}
-<main role="main">
+<main role="main" class="py-4">
+    <div class="container">
+        <section class="list-shell p-4 p-md-5 mb-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
+                <div>
+                    <p class="list-shell__title mb-2">Ficha de clientes</p>
+                    <h1 class="h3 mb-2">Listado de clientes</h1>
+                    <p class="text-muted mb-0">Consulta los datos de cada cliente registrado en la base de datos.</p>
+                </div>
+                <div class="list-stats">
+                    <div class="list-stats__count">{{ result_count }}</div>
+                    <div class="text-muted">cliente{{ result_count|pluralize }}</div>
+                </div>
+            </div>
+        </section>
 
-    <center>
-    {% if user.is_staff %}
-        {% for obj in object_list %}
-            <h1>{{ obj.Nombre }}</br></h1>
-                <font color="red"><h3>Cif: </font> {{ obj.Cif }}</br></h3>
-                <font color="red"><h3>Dirección: </font> {{ obj.Direccion }}</br></h3>
-                <font color="red"><h3>Localidad: </font>{{ obj.Localidad }}</br></h3>
-                <font color="red"><h3>Provincia: </font>{{ obj.Provincia }}</br></h3>
-                <font color="red"><h3>Código Postal: </font>{{ obj.CP }}</br></h3>
-                <font color="red"><h3>Fecha De Alta: </font>{{ obj.Alta }}</br></h3>
-                <h1 style="font-style:italic">{{ obj.Otros }}</h1>
-            <br></br>
-        {% endfor %}
-    {% endif %}
-    </center>
+        {% if user.is_staff %}
+            <section class="list-results">
+                {% for obj in object_list %}
+                    <article class="list-card">
+                        <div class="list-card__header">
+                            <div>
+                                <p class="list-card__section-title">Cliente {{ obj.id }}</p>
+                                <h2 class="list-card__name">{{ obj.Nombre }}</h2>
+                                <div class="mt-3 d-flex flex-wrap gap-2">
+                                    <span class="list-pill">CIF {{ obj.Cif }}</span>
+                                    <span class="list-pill">Alta {{ obj.Alta }}</span>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="mb-3">
+                            <p class="list-card__section-title">Dirección</p>
+                            <p class="list-card__text">{{ obj.Direccion }}</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <p class="list-card__section-title">Ubicación</p>
+                            <p class="list-card__text">{{ obj.Localidad }} · {{ obj.Provincia }} · CP {{ obj.CP }}</p>
+                        </div>
+
+                        {% if obj.Otros %}
+                            <div>
+                                <p class="list-card__section-title">Notas</p>
+                                <p class="list-card__text">{{ obj.Otros }}</p>
+                            </div>
+                        {% endif %}
+                    </article>
+                {% empty %}
+                    <div class="list-empty">No hay clientes para mostrar.</div>
+                {% endfor %}
+            </section>
+        {% endif %}
+    </div>
 </main>
 {% endblock %}
 
