@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <!-- Definiciones: Fuentes, Efectos de Neón y Sombra -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,900&amp;family=Saira:wght@700&amp;display=swap');
+      .title { font-family: 'Exo 2', 'Arial Black', sans-serif; font-style: italic; font-weight: 900; fill: #FF0033; letter-spacing: 2px; }
+      .subtitle { font-family: 'Saira', 'Arial', sans-serif; font-weight: 700; fill: #6B21A8; letter-spacing: 12px; }
+    </style>
+    <filter id="neon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Fondo Blanco Puro -->
+  <rect width="800" height="500" fill="#FFFFFF" />
+
+  <!-- ================= COMPOSICIÓN CENTRAL ================= -->
+  <g filter="url(#soft-shadow)">
+
+    <!-- ========== GAMEPAD (Posición de la hoz, horizontal) ========== -->
+    <g transform="translate(400, 230)">
+      <!-- Agarradera Izquierda (curvada como la hoz) -->
+      <path d="M -110 -20 Q -160 30 -140 85 Q -115 120 -75 80 L -65 0 Z" fill="#FF0033" filter="url(#neon-glow)" />
+      <!-- Agarradera Derecha -->
+      <path d="M 110 -20 Q 160 30 140 85 Q 115 120 75 80 L 65 0 Z" fill="#FF0033" filter="url(#neon-glow)" />
+
+      <!-- Cuerpo Central del Mando -->
+      <rect x="-105" y="-60" width="210" height="110" rx="50" fill="#FF0033" />
+
+      <!-- Detalles interiores (Ranurad interior para dar volumen) -->
+      <rect x="-90" y="-45" width="180" height="80" rx="35" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.3" />
+
+      <!-- CRUCETA / D-PAD (Morado) -->
+      <rect x="-75" y="-28" width="16" height="46" rx="3" fill="#6B21A8" />
+      <rect x="-90" y="-13" width="46" height="16" rx="3" fill="#6B21A8" />
+      <circle cx="-67" cy="-5" r="4" fill="#FFFFFF" opacity="0.8" />
+
+      <!-- BOTONES DE ACCIÓN (Verde Esperanza) -->
+      <circle cx="60" cy="-25" r="9" fill="#34D399" />
+      <circle cx="85" cy="0" r="9" fill="#34D399" />
+      <circle cx="60" cy="25" r="9" fill="#34D399" />
+      <circle cx="35" cy="0" r="9" fill="#34D399" />
+
+      <!-- Botones centrales (Select/Start) -->
+      <rect x="-15" y="-8" width="30" height="6" rx="3" fill="#0F172A" opacity="0.4" />
+      <rect x="-15" y="8" width="30" height="6" rx="3" fill="#0F172A" opacity="0.4" />
+
+      <!-- LED indicador de conexión (Verde Neón) -->
+      <circle cx="0" cy="40" r="4" fill="#39FF14" filter="url(#neon-glow)" />
+    </g>
+
+    <!-- ========== DESTORNILLADOR (Posición del martillo, diagonal) ========== -->
+    <g transform="translate(390, 210) rotate(45)">
+      <!-- Mango del destornillador (Rojo Fuerte) -->
+      <rect x="-24" y="50" width="48" height="150" rx="15" fill="#FF0033" filter="url(#neon-glow)" />
+
+      <!-- Estrías del mango (detalles blancos para textura) -->
+      <line x1="-24" y1="75" x2="24" y2="75" stroke="#FFFFFF" stroke-width="3" opacity="0.5" />
+      <line x1="-24" y1="100" x2="24" y2="100" stroke="#FFFFFF" stroke-width="3" opacity="0.5" />
+      <line x1="-24" y1="125" x2="24" y2="125" stroke="#FFFFFF" stroke-width="3" opacity="0.5" />
+      <line x1="-24" y1="150" x2="24" y2="150" stroke="#FFFFFF" stroke-width="3" opacity="0.5" />
+      <line x1="-24" y1="175" x2="24" y2="175" stroke="#FFFFFF" stroke-width="3" opacity="0.5" />
+
+      <!-- Virola metálica (Gris) -->
+      <rect x="-15" y="32" width="30" height="20" fill="#94A3B8" />
+      <line x1="-15" y1="38" x2="15" y2="38" stroke="#64748B" stroke-width="2" />
+      <line x1="-15" y1="46" x2="15" y2="46" stroke="#64748B" stroke-width="2" />
+
+      <!-- Vástago / Barra (Gris Claro) -->
+      <rect x="-8" y="-110" width="16" height="144" fill="#CBD5E1" />
+      <rect x="-6" y="-110" width="4" height="144" fill="#F1F5F9" opacity="0.7" />
+
+      <!-- Punta del destornillador (Plana) -->
+      <polygon points="-8,-110 8,-110 8,-130 -8,-130" fill="#E2E8F0" />
+      <polygon points="-8,-130 8,-130 4,-138 -4,-138" fill="#94A3B8" />
+    </g>
+
+  </g>
+
+  <!-- ================= TEXTO ================= -->
+
+  <!-- TEXTO: AGSatPC (Rojo Fuerte, Fuente Dinámica Exo 2) -->
+  <text x="400" y="420" text-anchor="middle" class="title" font-size="68">
+    AGSatPC
+  </text>
+
+  <!-- TEXTO: IT Consulting (Morado Oscuro, Fuente Saira) -->
+  <text x="400" y="470" text-anchor="middle" class="subtitle" font-size="24">
+    IT CONSULTING
+  </text>
+</svg>
