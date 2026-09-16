@@ -163,6 +163,7 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.ionos.es')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ('1', 'true', 'yes')
+DEFAULT_FROM_EMAIL = 'info@agsatpc.com'
 
 
 # Media Files.

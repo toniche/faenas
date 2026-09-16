@@ -1,5 +1,6 @@
 # JOE state file v1.0
 search
+	pattern "hol"
 	backwards 0
 	ignore 0
 	replace 0
@@ -9,6 +10,7 @@ done
 macros
 done
 files
+	"/home/desarrolloxerez/.git/COMMIT_EDITMSG\n"
 	"/home/desarrolloxerez/.git/COMMIT_EDITMSG\n"
 	"/home/desarrolloxerez/.git/COMMIT_EDITMSG\n"
 done
@@ -31,6 +33,7 @@ yank
 	"qqq"
 	"q"
 	"q\n"
+	"q"
 	"q"
 	"q"
 done
