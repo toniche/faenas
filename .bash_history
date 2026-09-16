@@ -1,186 +1,3 @@
-git pull origin master
-git pull master
-git push origin main
-git push origin master
-git push origin faenas
-git push origin main
-git push origin https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git push origin /desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git push origin faenas
-git push origin main
-git status
-git push origin master
-git pull origin master
-git pull faenas master
-git remote add origin https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git fetch
-git remote add origin git@bitbucket.org:desarE61Z/faenas.git
-git pull origin git@bitbucket.org:desarE61Z/faenas.git
-clear
-ls
-git pull origin git@bitbucket.org:desarE61Z/faenas.git
-git config --global user.name "Antonio Pichardo Gonzllalez"
-git config --global user.mail toni@agsatpc.com
-git add .
-git commit -m 'Subiendo con toni'
-git pull origin git@bitbucket.org:desarE61Z/faenas.git
-git config user.email q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-git pull origin git@bitbucket.org:desarE61Z/faenas.git
-git config user.email q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-git status
-git push origin git@bitbucket.org:desarE61Z/faenas.git
-git config user.email q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-git pull origin q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-clear
-git config user.email q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-git -list
-git --list
-git config --list
-git config --global user.name "Antonio Pichardo Gonzalez"
-git config --list
-git config user.email q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-git pull origin q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-clear
-git pull origin q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-
-git pull origin q110krtxfddmj37goxnodgkf3d09ka@bots.bitbucket.org
-ls
-git init
-git add .
-git commit -m 'Subiendo con toni'
-git status
-git config -list
-git config --list
-git pull origin https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git pull https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-CLEAR
-claer
-clear
-git pull https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git push origin master
-cd ..
-ls
-git push origin master
-cd faenas
-git push origin master
-ls
-cd webplayground
-git push origin master
-cd..
-cd ..
-ls
-git init
-git add .
-git config -list
-git config --list
-git status
-git commit -m 'Subiendo con toni'
-git push origin master
-git pull https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git config --list
-git config --global user.name "Antonio Pichardo Gonzalez"
-git config --global user.mail taitoni2023@gmail.com
-git config --list
-git config --global user.name "desarE61Z"
-git config --global user.mail taitoni2023@gmail.com
-git pull https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git status
-ls
-cd faenas
-ls
-cd webplayground
-ls
-cd ..
-ls
-rm -r pruebas
-rmdir pruebas
-rm -r pruebas
-clear
-cd pruebas
-ls
-re -r faenas
-rm -r faenas
-clear
-cd ..
-ls
-rm -rf pruebas
-ls
-git add .
-git commit -m 'borrado pruebas'
-git pull https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git config --list
-git pull https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git config --global user.name "Antonio Pichardo González"
-git config --global user.mail toni@agsatpc.com
-git pull https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-clear
-git pull https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-ls
-vi bitbucket_work
-vi bitbucket_work.pub
-cat ~/.ssh/bitbucket_work.pub | pbcopy
-cd .ssh
-ls
-cd ..
-ls
-cat bitbucket_work.pub | pbcopy
-ssh git@bitbucket.org:desarE61Z/faenas.git
-ssh faenas.git
-ssh
-ssh help
-ssh -version
-ssh --version
-ssh -V
-clear
-git log
-git remote add origin https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git push -u rogin master
-git push -u orogin master
-git push -u origin master
-git config --global user.name "desarE61Z"
-git config --global user.mail desarrolloxerez@gmail.com
-git push -u origin master
-git config --global user.mail taitoni2023@gmail.com
-git push -u origin master
-clear
-git log
-git push -u origin master
-ls
-cd ..
-ls
-cd ..
-ls
-cd usr
-ls
-exit
-workon django3
-ls
-vi hola.txt
-git add hola.txt
-git commit -m "Subiendo hola.txt"
-git status
-git add
-git add .
-git remote add origin https://desarE61Z@bitbucket.org/desarE61Z/faenas.git
-git push -u origin master
-ls
-git -test
-git --test
-git push -u origin master
-git status
-clear
-git --list
-git -list
-git config -list
-git config --list
-
-cd ..
-ls
-cd ..
-ls
-cd usr
-ls
-cd etc
 ls
 cd julia
 ls
@@ -482,6 +299,7 @@ ls
 git status
 git push
 exit
+<<<<<<< HEAD
 ls
 git rebase --abort 2>/dev/null || git merge --abort 2>/dev/null || true
 rm -v .git/index.lock
@@ -497,4 +315,186 @@ git rebase master | sed -n '1,4p'
 git status --porcelain=2 -b | sed -n '1,6p'
 clear
 nano faenas/webplayground/faenas/templates/faenas/repara.html
+=======
+workon django3
+ls
+cd faenas
+pip list
+python
+ls
+cd webplayground
+python manage.py check --deploy
+cd main
+ls
+python manage.py check --deploy
+pip install django
+python manage.py check --deploy
+ls
+djnago --version
+djnago -version
+django -version
+django --version
+python --version
+python
+python manage.py check --deploy
+python manage.py check
+exit
+ls
+cd ..
+ls
+edit requirements.txt
+vi requirements.txt
+wc requirements.txt
+clear
+help
+echo requirements.txt
+nano requirements.txt
+clear
+type requirements.txt
+clear
+nano requirements.txt
+clear
+ls
+cd ..
+ls
+nano requirements.txt
+cd faenas
+ls
+cd webplayground
+clear
+ls
+cd faenas
+ls
+cd ..
+clear
+ls
+python manage.py check
+python manage.py runserver
+clear
+ls
+cd ..
+ls
+pip install -r requirements.txt
+clear
+ls
+cd webplayground
+ls
+cd faenas
+ls
+cd ..
+python manage.py check
+clear
+nano requirements.txt
+ls
+cd ..
+nano requirements.txt
+ls
+cd webplayground
+clear
+python manage.py runserver
+exit
+ls
+git status
+git push origin master
+git branch backup-before-pull
+git fetch origin
+git status
+clear
+git log --oneline --left-right master...origin/master
+git pull --rebase origin master
+git rebase --abort
+git push origin master
+clear
+git branch backup-before-pull
+git remote -v
+git fetch origin
+git status
+git log --oneline --left-right master...origin/master
+clear
+git pull --rebase origin master
+git status --porcelain=2 -b
+cleaer
+clear
+git branch backup-before-pull
+git stash push -u -m "WIP before pull $(date +%F_%T)"
+git checkout -b wip/save-local-changes
+git add -A
+git commit -m "WIP: save local changes before pull"
+git checkout master
+clear
+git fetch origin
+git pull --rebase origin master
+git add repara.html
+git rebase --continue
+git stash pop
+git push origin master
+clear
+git rev-parse --abbrev-ref HEAD
+git status --porcelain=2 -b
+git diff --name-only
+git stash list
+clear
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+git fetch origin >/dev/null 2>&1
+printf "BRANCH: %s\nCHANGES(untracked+modified): %s\nSTASHES: %s\nCOMMITS(local remote): %s\n" "$BRANCH" "$(git status --porcelain | wc -l)" "$(git stash list | wc -l)" "$(git rev-list --left-right --count "$BRANCH"...origin/"$BRANCH" 2>/dev/null || echo N/A)"
+git add -A
+git commit -m "WIP: guardar cambios locales antes de sincronizar" || echo "No hubo cambios para commitear"
+clear
+if command -v pgrep >/dev/null 2>&1; then   pgrep -a git || echo "No hay procesos git activos"; else   ps aux | grep -E 'git' | grep -v grep || echo "No hay procesos git activos"; fi
+clear
+ps -p 420 -o pid,etime,cmd
+clear
+ps -p 420 -o pid,etime,cmd
+kill 420
+sleep 1
+ps -p 420 -o pid,etime,cmd || echo "Proceso 420 no encontrado"
+rm -v .git/index.lock
+git status --porcelain=2 -b | sed -n '1,4p'
+clear
+git add -A && (git commit -m "WIP: guardar cambios locales antes de sincronizar" || echo "No hubo cambios para commitear") && printf "\nBRANCH: %s\nLAST: " "$(git rev-parse --abbrev-ref HEAD)" && git log --oneline -n1
+clear
+git add -A && (git commit -m "WIP: guardar cambios locales antes de sincronizar" || echo "No hubo cambios para commitear") && printf "\nBRANCH: %s\nLAST: " "$(git rev-parse --abbrev-ref HEAD)" && git log --oneline -n1
+git checkout master && git fetch origin && git pull --rebase origin master | sed -n '1,4p'
+clear
+git checkout wip/save-local-changes && git rebase master | sed -n '1,4p'
+git checkout master && git merge --no-ff wip/save-local-changes -m "Merge WIP" || echo "Merge skipped (ya integrado)" && git push origin master | sed -n '1,3p'
+>>>>>>> 3923c16 (WIP: guardar cambios locales antes de sincronizar)
+exit
+source ~/venv/myvenv313/bin/activate
+ls
+cd faenas
+cd webplayground
+source ~/venv/myvenv313/bin/activate
+activate
+cd venv
+cd ..
+cd venv
+ls
+cd faneas
+exit
+source ~/venv/myvenv313/bin/activate
+ls
+cd faenas
+ls
+cd ..
+cd webplayground
+ls
+cd ..
+ls
+source ~/venv/myvenv313/bin/activate
+exit
+source ~/venv/myvenv313/bin/activate
+ls venv
+ls
+cd faneas
+cd faenas
+ls
+cd webplayground
+clear
+ls
+cd faenas
+ls
+cd ..
+cd webplayground
+ls
 exit
